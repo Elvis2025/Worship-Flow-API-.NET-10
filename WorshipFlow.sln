@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorshipFlow.Domain", "src/WorshipFlow.Domain/WorshipFlow.Domain.csproj", "{9AFCE8D8-EC4D-4BF0-8CEE-83E7B08971E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorshipFlow.Application", "src/WorshipFlow.Application/WorshipFlow.Application.csproj", "{FE13D58F-D034-4968-89CF-B6CA6DD4C446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorshipFlow.Infrastructure", "src/WorshipFlow.Infrastructure/WorshipFlow.Infrastructure.csproj", "{5744272D-618F-4F1F-A9EA-66C472103A0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorshipFlow.Api", "src/WorshipFlow.Api/WorshipFlow.Api.csproj", "{DF2720C0-4089-45F1-96E9-D655AF3F560D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorshipFlow.Tests", "tests/WorshipFlow.Tests/WorshipFlow.Tests.csproj", "{C567B934-C4BF-48E7-A0EC-17DC3D4E0B77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9AFCE8D8-EC4D-4BF0-8CEE-83E7B08971E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AFCE8D8-EC4D-4BF0-8CEE-83E7B08971E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE13D58F-D034-4968-89CF-B6CA6DD4C446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE13D58F-D034-4968-89CF-B6CA6DD4C446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5744272D-618F-4F1F-A9EA-66C472103A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5744272D-618F-4F1F-A9EA-66C472103A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF2720C0-4089-45F1-96E9-D655AF3F560D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF2720C0-4089-45F1-96E9-D655AF3F560D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C567B934-C4BF-48E7-A0EC-17DC3D4E0B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C567B934-C4BF-48E7-A0EC-17DC3D4E0B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal
