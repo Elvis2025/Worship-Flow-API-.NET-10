@@ -24,3 +24,13 @@ Clean Architecture API for Worship Flow. This repository now contains M1: users,
 - `PUT /api/users/{id}/roles`
 - `GET /api/permissions`
 - `PUT /api/users/{id}/permissions`
+
+## Default development administrator
+
+`WorshipFlowDbContext.SeedAsync` creates a default tenant and a development administrator for local and integration-test bootstrapping:
+
+- Email: `admin@worshipflow.local`
+- Password: `ChangeMe123!`
+- Role: `Administrator`
+
+Change this credential before any non-development deployment.

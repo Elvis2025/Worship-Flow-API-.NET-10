@@ -29,6 +29,7 @@ public static class InfrastructureServices
         services.AddScoped<ITokenService, JwtTokenService>();
         services.AddScoped<IFileStorage, LocalFileStorage>();
         services.AddScoped<IAuditService, AuditService>();
+        services.AddScoped<IUserAuthorizationService, UserAuthorizationService>();
         services.AddHttpContextAccessor();
 
         var key = Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? "dev-key-change-me-dev-key-change-me-32");
@@ -43,7 +44,6 @@ public static class InfrastructureServices
                 ClockSkew = TimeSpan.FromMinutes(1)
             };
         });
-        services.AddAuthorization();
         return services;
     }
 }

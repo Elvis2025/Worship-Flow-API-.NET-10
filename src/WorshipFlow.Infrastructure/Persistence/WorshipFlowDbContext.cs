@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WorshipFlow.Application.Abstractions;
 using WorshipFlow.Domain.Constants;
 using WorshipFlow.Domain.Entities;
+using WorshipFlow.Domain.Enums;
 
 namespace WorshipFlow.Infrastructure.Persistence;
 
@@ -55,5 +56,32 @@ public sealed class WorshipFlowDbContext(DbContextOptions<WorshipFlowDbContext> 
                 foreach (var p in permissions.Where(p => role.Permissions.All(rp => rp.PermissionId != p.Id))) db.RolePermissions.Add(new RolePermission { TenantId = tenant.Id, RoleId = role.Id, PermissionId = p.Id });
         }
         await db.SaveChangesAsync(ct);
+
+        var administratorRole = await db.Roles.FirstAsync(x => x.TenantId == tenant.Id && x.Name == SystemRoles.Administrator, ct);
+        var administratorEmail = "admin@worshipflow.local";
+        var administrator = await db.Users.IgnoreQueryFilters().FirstOrDefaultAsync(x => x.TenantId == tenant.Id && x.Email == administratorEmail, ct);
+        if (administrator is null)
+        {
+            administrator = new AppUser
+            {
+                TenantId = tenant.Id,
+                FirstName = "System",
+                LastName = "Administrator",
+                FullName = "System Administrator",
+                Email = administratorEmail,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("ChangeMe123!"),
+                MainInstrument = "Administration",
+                Status = UserStatus.Active,
+                JoinedAt = DateTimeOffset.UtcNow
+            };
+            db.Users.Add(administrator);
+            await db.SaveChangesAsync(ct);
+        }
+
+        if (!await db.UserRoles.AnyAsync(x => x.TenantId == tenant.Id && x.UserId == administrator.Id && x.RoleId == administratorRole.Id, ct))
+        {
+            db.UserRoles.Add(new UserRole { TenantId = tenant.Id, UserId = administrator.Id, RoleId = administratorRole.Id });
+            await db.SaveChangesAsync(ct);
+        }
     }
 }
