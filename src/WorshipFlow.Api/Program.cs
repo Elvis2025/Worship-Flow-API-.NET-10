@@ -42,6 +42,7 @@ app.UseCors();
 app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapGet("/", () => Results.Redirect("/swagger"));
 app.MapControllers().RequireRateLimiting("api");
 app.Run();
 
